@@ -2,22 +2,35 @@
 
 **Senior Full-Stack Engineer | AI Applications & Backend Systems**
 
-I build full-stack applications, SaaS products, APIs, and integrations, with 5+ years of professional experience connecting product interfaces to backend workflows. My foundation is JavaScript/TypeScript engineering, data modeling, and reliable delivery; I’m extending that work through practical AI applications. I favor explicit system boundaries, tested failure paths, and architecture that makes usable software easier to ship and maintain.
+I have 5+ years of professional experience building SaaS applications, APIs, integrations, and backend workflows. My foundation is full-stack/backend engineering, data modeling, and reliable delivery; AI applications are an expanding specialization. I favor correctness, explicit system boundaries, tested failure paths, and clear engineering decisions that make working software easier to ship and maintain.
 
 [Portfolio](https://mubashirhussain.dev) · [Résumé](https://mubashirhussain.dev/resume)
 
 ## Featured Engineering
 
+### [PRISM — AI PR Review Agent](https://github.com/mubidotjs/ai-pr-review-agent)
+
+Reviews public GitHub PRs against pinned source evidence and produces suggestions for human approval.
+
+- The backend prepares bounded evidence for one native Gemma inference. Node independently validates supported findings against exact added-line coordinates and the pinned head SHA.
+- Vercel Node Functions and a private Workers AI relay enforce authentication and shared admission/quota controls. Human approval unlocks manual-copy Markdown; nothing automatically publishes to GitHub.
+
+**Stack:** React, TypeScript, Node.js, Cloudflare Workers AI, Vercel.
+
+**Status:** Production LIVE; real AI acceptance PASS. Authenticated approval and clipboard PASS used a labeled synthetic replay. Public demo available; live ingestion and real AI require private owner authentication. Coverage is limited to three supported risk categories.
+
+[Live application](https://prism.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/ai-pr-review-agent/blob/main/docs/ARCHITECTURE.md) · [Production verification](https://github.com/mubidotjs/ai-pr-review-agent/blob/main/docs/PRODUCTION.md) · [Evidence](https://github.com/mubidotjs/ai-pr-review-agent/blob/main/docs/production-live-result.json)
+
 ### [AI Release Notes Generator](https://github.com/mubidotjs/ai-release-notes-generator)
 
 Turns public GitHub comparisons into categorized release notes with inspectable source evidence.
 
-- A Cloudflare Worker retrieves bounded commit context and calls Workers AI. Coverage warnings disclose omitted commits; request, prompt, output, and time limits constrain resource consumption.
-- Strict schemas, retrieved-SHA checks, and exact evidence excerpts reject malformed output and fabricated references. Provider failures surface explicitly, without automatic retries or paid fallback.
+- A Cloudflare Worker ingests public GitHub comparisons and calls native Workers AI/Gemma. Coverage warnings disclose omitted commits; request, prompt, output, and time limits bound inference.
+- Strict schemas, retrieved-SHA checks, and exact evidence excerpts reject malformed output and fabricated references. Validated notes export as Markdown; failures surface without automatic retries or paid fallback.
 
 **Stack:** React, TypeScript, Vite, Cloudflare Workers AI, Zod.
 
-**Status:** Deployed live integration verified on one documented generation. Sources are commit messages; mechanical grounding does not establish semantic correctness or general model quality.
+**Status:** Production deployed; one real AI generation verified. Sources are commit messages; mechanical grounding does not establish semantic correctness or general model quality.
 
 [Live demo](https://release-notes.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/ai-release-notes-generator/blob/main/docs/ARCHITECTURE.md) · [Evaluation](https://github.com/mubidotjs/ai-release-notes-generator/blob/main/docs/EVALUATION.md)
 
@@ -25,8 +38,8 @@ Turns public GitHub comparisons into categorized release notes with inspectable 
 
 Makes webhook acceptance durable and failed delivery recoverable, with an operations UI for investigation and replay.
 
-- Events, deliveries, and outbox work commit together before acknowledgment. Leased processing and stale-worker fencing support recovery while preserving at-least-once delivery semantics.
-- Idempotent ingestion, bounded retries, HMAC signing, and tenant-scoped access protect delivery boundaries. Failure-path tests exercise recovery and replay while preserving immutable attempt history.
+- Events, deliveries, and transactional outbox work commit before acknowledgment. Leased workers and stale-worker fencing support recovery with at-least-once delivery.
+- Idempotent ingestion, bounded retries, HMAC signing, and tenant isolation protect delivery boundaries. Operational inspection and replay preserve immutable attempt history.
 
 **Stack:** TypeScript, Next.js, PostgreSQL, Prisma, QStash.
 
@@ -34,32 +47,33 @@ Makes webhook acceptance durable and failed delivery recoverable, with an operat
 
 [Hosted application](https://webhooks.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/reliable-webhook-platform/blob/main/docs/architecture.md) · [Verification](https://github.com/mubidotjs/reliable-webhook-platform/blob/main/docs/reviews/m4-v1-hardening.md)
 
-### [Ledger Lens](https://github.com/mubidotjs/ai-invoice-receipt-processor)
+### [Ledger Lens — Invoice & Receipt Processor](https://github.com/mubidotjs/ai-invoice-receipt-processor)
 
 Processes invoices and receipts through working OCR/PDF extraction, manual document review, and structured exports.
 
-- PDF.js and Tesseract.js process documents in browser memory with bundled assets, avoiding document uploads in the local workflow. File, page, and processing limits bound resource use.
+- Real PDF text extraction and Tesseract OCR run in browser memory with bundled assets, keeping documents local. File, page, and processing limits bound resource use.
 - Decimal-safe arithmetic checks and schema validation guard JSON/CSV exports. Edits reset review; unresolved warnings require acknowledgment, and CSV text is protected against spreadsheet formulas.
 
 **Stack:** React, TypeScript, PDF.js, Tesseract.js, Zod.
 
-**Status:** Public OCR/review/export demo verified. Latest AI acceptance stopped at provider invocation, before output validation; live AI remains disabled with no accepted live-AI workflow.
+**Status:** Public OCR/document-processing demo verified. Live AI extraction remains disabled; no accepted live-AI workflow is claimed.
 
-[Public demo](https://invoice.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/ARCHITECTURE.md) · [Acceptance evidence](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/EVIDENCE-COMPLETENESS.md)
+[Public demo](https://invoice.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/ARCHITECTURE.md) · [Deployment status](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/DEPLOYMENT.md) · [Acceptance evidence](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/EVIDENCE-COMPLETENESS.md)
 
 ## Engineering Focus
 
-- **AI Application Engineering:** model-backed workflows, structured output validation, source grounding, and evaluation with explicit verification boundaries.
-- **Backend & Distributed Systems:** asynchronous jobs, transactional outboxes, idempotency, retry semantics, and recovery from uncertain outcomes.
+- **Backend & Distributed Systems:** explicit delivery guarantees, asynchronous workflows, and recovery from uncertain outcomes.
 - **Full-Stack Product Engineering:** usable React/Next.js interfaces, API contracts, data models, and third-party integrations.
-- **Production Reliability & Security:** authentication, tenant isolation, bounded resource consumption, automated testing, and deployment checks.
+- **Production Reliability & Security:** tested failure paths, authorization boundaries, maintainable architecture, and deployment checks.
+- **AI Application Engineering:** model integration with inspectable evidence, structured validation, and explicit verification boundaries.
 
 ## Technology Stack
 
 - **Languages & UI:** JavaScript, TypeScript, React, Next.js.
 - **Backend & APIs:** Node.js, Express, NestJS, REST APIs.
-- **Databases & Infrastructure:** PostgreSQL, MongoDB, AWS, Docker, Cloudflare Workers.
-- **AI & Evaluation:** Workers AI, Zod, synthetic fixtures, source-evidence checks.
+- **Data:** PostgreSQL, MongoDB.
+- **Infrastructure:** AWS, Docker, Cloudflare Workers, Vercel.
+- **AI Applications:** native Workers AI, model integration, structured validation, source grounding, bounded workflows.
 - **Testing & Delivery:** Vitest, Playwright, GitHub Actions, CI/CD.
 
 ## Current Exploration
