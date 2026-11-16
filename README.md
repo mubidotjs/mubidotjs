@@ -60,6 +60,21 @@ Processes invoices and receipts through working OCR/PDF extraction, manual docum
 
 [Public demo](https://invoice.mubashirhussain.dev) · [Architecture](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/ARCHITECTURE.md) · [Deployment status](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/DEPLOYMENT.md) · [Acceptance evidence](https://github.com/mubidotjs/ai-invoice-receipt-processor/blob/main/docs/EVIDENCE-COMPLETENESS.md)
 
+### [Rolecraft — AI Job Application Tracker](https://github.com/mubidotjs/ai-job-application-tracker)
+
+A local-first job application tracker with real Ollama/Qwen3 4B requirement extraction, strict source-evidence validation, and human corrections.
+
+- Explainable résumé matching connects requirements to reviewed evidence. Application tracking records progress; deterministic drafts require explicit human approval before copying.
+- SQLite persistence includes WAL-safe backup and transactional recovery, with tested corruption rejection and rollback.
+
+**Stack:** Next.js, React, TypeScript, SQLite, Ollama, Qwen3, Zod, Vitest, Playwright.
+
+**Status:** Real local AI PASS. Reviewed quality set: 8/8 accepted (five reruns, three retained controls); separate holdout: 4/4 accepted, 92.3% recall. Final local acceptance passed 74 unit/integration tests and five Chromium scenarios. These small synthetic evaluations retain human review requirements.
+
+The independently deployed and verified static public showcase uses labeled synthetic outputs, separate from real local inference evidence. No publicly hosted inference or private data processing.
+
+[Interactive Demo](https://rolecraft.mubashirhussain.dev/) · [Repository](https://github.com/mubidotjs/ai-job-application-tracker) · [Quality evaluation](https://github.com/mubidotjs/ai-job-application-tracker/blob/main/docs/quality-correction.md) · [Portfolio walkthrough](https://github.com/mubidotjs/ai-job-application-tracker/blob/main/docs/portfolio-walkthrough.md)
+
 ## Engineering Focus
 
 - **Backend & Distributed Systems:** explicit delivery guarantees, asynchronous workflows, and recovery from uncertain outcomes.
